@@ -10,6 +10,7 @@ Autor        : Raffael Bottoli Schemmer
 // Bibliotecas utilizadas
 #include "mpi.h" // Mpi para comunicacao em rede entre os nós
 #include <stdio.h> // Biblioteca padrão para entrada e saida.
+#include <stdlib.h>
 
 #define SIZE 1024			/* Size of matrices */
 // Constante que define o tamanho da matriz.

@@ -115,9 +115,12 @@ int main(int argc, char **argv)
 		int **index = i;
 		cont = pthread_create(&thWork[i], NULL, matrix,(void*)index);			
 	}
-	i--;
-	pthread_join(thWork[i],(void **)&cont);
-	
+	i=0;
+	while(i < numCores)
+	{
+		pthread_join(thWork[i],(void **)&cont);
+		i++;
+	}
 	// Descomentar a chamada desta função para visualizar a saída da multiplicação (Lembrando que o tempo de execução é aumentando expressivamente ao descomentar esta função).
 	//show_matrix();
 	

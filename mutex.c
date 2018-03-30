@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include<pthread.h>
+#include<string.h>
+#include<stdlib.h>
+#include<unistd.h>
 
-#DEFINE numThreads 4 // NÚMERO DE OPERÁRIOS
-
-pthread_t tid[numThreads]; // PONTEIROS DAS THREADS
+int numThreads = 4; // NÚMERO DE OPERÁRIOS
+pthread_t tid[4]; // PONTEIROS DAS THREADS
 
 int count; // VARIÁVEL COMPARTILHADA
 
@@ -14,7 +16,7 @@ void* Trabalho(void *arg)
 
    unsigned long i = 0;
     
-   pthread_mutex_lock(&mcount);
+   pthread_mutex_lock(&mcount); // MUTEX QUE SINCRONIZA A ORDEM DE CHAMADA
 
    count = count + 1;
  
@@ -35,8 +37,8 @@ int main(void)
     
 	int i;
 
-	// INICIALIZA O MUTEX
-	pthread_mutex_init(&mcount);
+    // INICIALIZA O MUTEX
+    pthread_mutex_init(&mcount,NULL);
 	
 	// CRIA AS THREADS TRABALHADORAS
     i=0;
